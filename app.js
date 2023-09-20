@@ -9,18 +9,24 @@ var indexRouter = require("./routes/index");
 var pokemonsRouter = require("./routes/pokemons");
 
 var app = express();
-
-app.use(cors());
+const corsOptions = {
+  origin: "https://fluffy-cat-614a04.netlify.app", // Replace with your frontend domain
+  methods: "GET, POST, PUT, DELETE",
+  allowedHeaders: "Content-Type, Authorization",
+};
+app.use(cors(corsOptions));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/pokemons", pokemonsRouter);
-app.use((error, req, res, next) => {
-  res.status(error.statusCode).send(error.message);
+app.listen(3000, () => {
+  app.use("/", indexRouter);
+  app.use("/pokemons", pokemonsRouter);
+  app.use((error, req, res, next) => {
+    res.status(error.statusCode).send(error.message);
+  });
 });
 
 module.exports = app;
