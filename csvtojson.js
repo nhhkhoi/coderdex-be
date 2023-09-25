@@ -1,8 +1,8 @@
 const fs = require("fs");
 const csv = require("csvtojson");
 const faker = require("@faker-js/faker");
-
 const csvFilePath = "./Pokemon.csv";
+
 csv()
   .fromFile(csvFilePath)
   .then((jsonObj) => {
@@ -63,8 +63,7 @@ const transformJson = (json) => {
       const newKey = "id";
       json[newKey] = json[key];
       delete json[key];
-      const link = `http://localhost:3000/images/${json[newKey]}.png`;
-      json[url] = link;
+      json[url] = "URL";
     }
     // make types to array
     if (key === typeOne) {
@@ -89,3 +88,7 @@ const transformJson = (json) => {
     }
   }
 };
+
+const processedJson = (jsonObj) => {
+  jsonObj.forEach()
+}
