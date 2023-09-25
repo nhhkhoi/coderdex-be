@@ -25,12 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(3000, () => {
-  app.use("/", indexRouter);
-  app.use("/pokemons", pokemonsRouter);
-  app.use((error, req, res, next) => {
-    res.status(error.statusCode).send(error.message);
-  });
+app.use("/", indexRouter);
+app.use("/pokemons", pokemonsRouter);
+app.use((error, req, res, next) => {
+  res.status(error.statusCode).send(error.message);
 });
 
 module.exports = app;
