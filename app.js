@@ -9,12 +9,16 @@ var indexRouter = require("./routes/index");
 var pokemonsRouter = require("./routes/pokemons");
 
 var app = express();
+// Cors
 const corsOptions = {
-  origin: "https://fluffy-cat-614a04.netlify.app", // Replace with your frontend domain
+  origin: process.env.REACT_APP_FRONTEND_URL, // Replace with your frontend domain
   methods: "GET, POST, PUT, DELETE",
   allowedHeaders: "Content-Type, Authorization",
 };
 app.use(cors(corsOptions));
+// Cloudinary
+const cloudinary = require("cloudinary").v2;
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

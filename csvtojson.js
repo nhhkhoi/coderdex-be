@@ -9,6 +9,7 @@ csv()
     let newJsonObj = [];
     jsonObj.forEach((json) => {
       transformJson(json);
+
       const newJson = {
         id: json.id,
         name: json.Name,
@@ -23,6 +24,7 @@ csv()
 
       newJsonObj = [...newJsonObj, newJson];
     });
+
     // remove duplicate id
     let count = 0;
     newJsonObj = newJsonObj.filter((json) => {
