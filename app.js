@@ -1,5 +1,5 @@
 require("dotenv").config();
-// const cors = require("cors");
+const cors = require("cors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -10,12 +10,12 @@ var pokemonsRouter = require("./routes/pokemons");
 
 var app = express();
 // Cors
-// const corsOptions = {
-//   origin: process.env.REACT_APP_FRONTEND_URL, // Replace with your frontend domain
-//   methods: "GET, POST, PUT, DELETE",
-//   allowedHeaders: "Content-Type, Authorization",
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: "*", // Replace with your frontend domain
+
+  credentials: true,
+};
+app.use(cors(corsOptions));
 // Cloudinary
 const cloudinary = require("cloudinary").v2;
 
