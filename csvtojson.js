@@ -88,7 +88,3 @@ const transformJson = (json) => {
     }
   }
 };
-
-const processedJson = (jsonObj) => {
-  jsonObj.forEach()
-}

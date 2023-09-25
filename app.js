@@ -12,13 +12,9 @@ var app = express();
 // Cors
 const corsOptions = {
   origin: "*", // Replace with your frontend domain
-
   credentials: true,
 };
 app.use(cors(corsOptions));
-// Cloudinary
-const cloudinary = require("cloudinary").v2;
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
