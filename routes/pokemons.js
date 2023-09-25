@@ -7,12 +7,12 @@ router.get("/", function (req, res, next) {
   try {
     const { search, type, page, limit } = req.query;
     let data = { data: [] };
-    let typeLowerCase = type?.toLowerCase();
+
     let searchLowerCase = search?.toLowerCase();
 
     if (type) {
       data.data = pokemons.data.filter((pokemon) =>
-        pokemon.types.toLowerCase().includes(typeLowerCase)
+        pokemon.types.includes(type)
       );
     }
     if (search) {
